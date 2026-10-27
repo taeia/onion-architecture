@@ -17,7 +17,7 @@
          repositories and the clock, so those five interfaces are declared here, in
          the ring that uses them, for an outer ring to implement. The ring depends on
          the model and on nothing else: it may look inward, never out. Its tests hold
-         the fakes that answer the five interfaces. -->
+         the fakes that answer four of them; no test here needs books. -->
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>

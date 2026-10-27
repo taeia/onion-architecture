@@ -51,7 +51,7 @@ mvn test
 
 `ScenarioTest` lives in the `scenarios` module and has one test per scenario of Chapter 0, with the same name. It holds the four driving ports, names members, copies, and books the way Chapter 0 does, reads the library back through the browsing port, and moves a `SettableClock` from day to day. It never sees an aggregate.
 
-The unit tests of single rules split with the rings they test. The `model` module has the tests of the aggregates and the values, thirty-eight of them, which need no fake because the model asks nothing of anyone. The `domain` module has the eleven tests of `Lending` and `Reserving`, on fakes that implement the five interfaces the ring declares. The `cli` module tests the command line: what it prints for what it is told, including the whole month script. The `http` module tests the endpoint: what it answers for what it is sent, and that the change signal rings once per completed command and not for a refusal. Seventy-eight tests in all, the same seventy-eight as Chapter 8.
+The unit tests of single rules split with the rings they test. The `model` module has the tests of the aggregates and the values, thirty-eight of them, which need no fake because the model asks nothing of anyone. The `domain` module has the eleven tests of `Lending` and `Reserving`, on fakes that implement four of the five interfaces the ring declares. The `cli` module tests the command line: what it prints for what it is told, including the whole month script. The `http` module tests the endpoint: what it answers for what it is sent, and that the change signal rings once per completed command and not for a refusal. Seventy-eight tests in all, the same seventy-eight as Chapter 8.
 
 ## Layout
 
@@ -89,7 +89,7 @@ domain/                        the second ring: the domain services and the inte
   src/test/java/library/domain/
     LendingTest.java           the operations that cross aggregates, on the fakes below
     ReservingTest.java
-    FakeMemberRepository.java  the five interfaces of this ring, implemented for these tests
+    FakeMemberRepository.java  four of this ring's five interfaces, implemented for these tests
     FakeCopyRepository.java
     FakeQueueRepository.java
     FakeClock.java

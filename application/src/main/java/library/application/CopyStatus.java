@@ -1,7 +1,7 @@
 package library.application;
 
 /**
- * The three states of a copy, as the core reports them. The enum inside {@code Copy}
+ * The three states of a copy, as the application ring reports them. The enum inside {@code Copy}
  * is the copy's own business; this one is what crosses the port.
  */
 public enum CopyStatus {

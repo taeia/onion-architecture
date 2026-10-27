@@ -20,7 +20,7 @@ public interface MemberRepository {
 
     /**
      * The member with that name, or null if there is none. The drivers name members
-     * by name, so the core has to find them by it.
+     * by name, so the inside has to find them by it.
      */
     Member named(String name);
 

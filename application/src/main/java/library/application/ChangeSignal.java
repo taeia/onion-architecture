@@ -2,7 +2,7 @@ package library.application;
 
 /**
  * Tells whoever is listening that the library changed. A driven port with one method
- * and no arguments: the core calls it after every command that completed, and it says
+ * and no arguments: the command services call it after every command that completed, and it says
  * that something changed, not what. The adapter decides what to do with that, and the
  * usual answer is to ask the queries again. This is the pull form of the Observer
  * pattern, and what Fowler calls an event notification: the smallest message that can
