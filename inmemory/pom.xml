@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>onion-architecture</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>inmemory</artifactId>
+
+    <!-- The driven adapters, on the outermost ring: the four repositories, the clock, and
+         the mailbox, implemented with lists and a field. An outer ring may see every
+         ring inside it, and this one sees all three: the model, because it stores
+         aggregates; the domain services ring, because the repositories and the clock
+         are declared there; and the application ring, because the notifier is. No
+         ring knows this module exists, and neither do the other adapters, until a
+         driver chooses it. The change signal has no adapter here: each driver answers
+         it with a lambda of its own. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>application</artifactId>
+        </dependency>
+    </dependencies>
+</project>

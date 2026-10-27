@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>onion-architecture</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>desktop</artifactId>
+
+    <!-- A driving adapter: the JavaFX window. It depends on the application ring for the
+         driving ports it calls and the records that come back through them, and on the
+         domain services ring because its entry point is the configurator for this
+         program, which builds Lending and Reserving before it builds the services
+         around them. It does not depend on the model, because no domain object reaches
+         the screen. It depends on the in-memory adapters because the same configurator
+         chooses the storage, the clock, and the mailbox, and on the HTTP endpoint,
+         because it starts that second driver inside this program, next to the window. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>inmemory</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>library.desktop.MainWindow</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

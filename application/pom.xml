@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>domain-centric-architecture</groupId>
+        <artifactId>onion-architecture</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <artifactId>application</artifactId>
+
+    <!-- The third ring: the application services, the driving ports they implement, the
+         records that cross those ports, and the two driven ports that only this ring
+         calls, the notifier and the change signal. It depends on the domain services
+         ring, whose Lending and Reserving it asks to do the work, and on the model,
+         whose aggregates it finds, reads, and turns into records. Maven would hand it
+         the model through the domain ring anyway; the pom says so because the code
+         does. -->
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>domain</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>model</artifactId>
+        </dependency>
+    </dependencies>
+</project>
